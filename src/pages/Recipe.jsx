@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Recipe = () => {
   const [details, setDetails] = useState({});
-  const [activeTab, setActiveTab] = useState("instructions");
+  const [isInstructionsTab, setIsInstructionsTab] = useState(true);
 
   let params = useParams();
 
@@ -28,25 +28,23 @@ const Recipe = () => {
       </div>
       <Info>
         <Button
-          className={activeTab === "instructions" ? "active" : ""}
-          onClick={() => setActiveTab("instructions")}
+          className={isInstructionsTab ? "active" : ""}
+          onClick={() => setIsInstructionsTab(true)}
         >
           Instructions
         </Button>
         <Button
-          className={activeTab === "ingredients" ? "active" : ""}
-          onClick={() => setActiveTab("ingredients")}
+          className={isInstructionsTab ? "" : "active"}
+          onClick={() => setIsInstructionsTab(false)}
         >
           Ingredients
         </Button>
-        {activeTab === "instructions" && (
+        {isInstructionsTab ? (
           <div>
             <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
             <h3 dangerouslySetInnerHTML={{ __html: details.instructions }}></h3>
           </div>
-        )}
-
-        {activeTab === "ingredients" && (
+        ) : (
           <ul>
             {details.extendedIngredients?.map((ingredient) => {
               return <li key={ingredient.id}>{ingredient.original}</li>;
@@ -67,6 +65,10 @@ const DetailWrapper = styled.div`
     color: white;
   }
 
+  img {
+    border-radius: 2rem;
+  }
+
   h2 {
     margin-bottom: 2rem;
     line-height: 2.5rem;
@@ -74,6 +76,10 @@ const DetailWrapper = styled.div`
 
   ul {
     margin-top: 2rem;
+
+    li {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -81,7 +87,7 @@ const Button = styled.button`
   padding: 1rem 2rem;
   color: #313131;
   background: white;
-  border: 2px soild black;
+  border: 2px solid black;
   margin-right: 2rem;
   font-weight: 600;
   cursor: pointer;
@@ -89,6 +95,10 @@ const Button = styled.button`
 
 const Info = styled.div`
   margin-left: 10rem;
+
+  h3 {
+    font-size: 1rem;
+  }
 `;
 
 export default Recipe;

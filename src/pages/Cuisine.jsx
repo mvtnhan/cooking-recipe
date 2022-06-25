@@ -8,10 +8,14 @@ function Cuisine() {
   let params = useParams();
 
   const getCuisine = async (name) => {
+    const check = localStorage.getItem(`${name}`);
+    if (check) return setCuisine(JSON.parse(check));
+
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}&number=100`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&type=${name}&number=100`
     );
     const recipes = await data.json();
+    localStorage.setItem(`${name}`, JSON.stringify(recipes.results));
     setCuisine(recipes.results);
   };
 

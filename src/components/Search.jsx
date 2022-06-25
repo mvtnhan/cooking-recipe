@@ -18,6 +18,7 @@ const Search = () => {
         <FaSearch />
         <input
           type="text"
+          placeholder="What food are you looking for?"
           value={valueSearch}
           onChange={(e) => setValueSearch(e.target.value)}
         />

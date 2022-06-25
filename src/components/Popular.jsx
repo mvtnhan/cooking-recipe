@@ -30,7 +30,7 @@ const Popular = () => {
       <h3>Popular Picks</h3>
       <Splide
         options={{
-          perPage: 4,
+          perPage: 3,
           arrows: true,
           pagination: true,
           drag: "free",

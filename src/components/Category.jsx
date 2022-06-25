@@ -1,27 +1,36 @@
 import React from "react";
-import { FaHamburger, FaPizzaSlice } from "react-icons/fa";
-import { GiChopsticks, GiNoodles } from "react-icons/gi";
+import { FaCocktail, FaLeaf } from "react-icons/fa";
+import { GiCupcake, GiHotMeal, GiSlicedBread } from "react-icons/gi";
+import { TbSoup } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const Category = () => {
   return (
     <List>
-      <SLink to={"/cuisine/Italian"}>
-        <FaPizzaSlice />
-        <h4>Italian</h4>
+      <SLink to={"/cuisine/maincourse"}>
+        <GiHotMeal />
+        <h4>Main Course</h4>
       </SLink>
-      <SLink to={"/cuisine/American"}>
-        <FaHamburger />
-        <h4>American</h4>
+      <SLink to={"/cuisine/bread"}>
+        <GiSlicedBread />
+        <h4>Bread</h4>
       </SLink>
-      <SLink to={"/cuisine/Thai"}>
-        <GiNoodles />
-        <h4>Thai</h4>
+      <SLink to={"/cuisine/soup"}>
+        <TbSoup />
+        <h4>Soup</h4>
       </SLink>
-      <SLink to={"/cuisine/Vietnamese"}>
-        <GiChopsticks />
-        <h4>Vietnamese</h4>
+      <SLink to={"/cuisine/appetizer"}>
+        <GiCupcake />
+        <h4>Appetizer</h4>
+      </SLink>
+      <SLink to={"/cuisine/salad"}>
+        <FaLeaf />
+        <h4>Salad</h4>
+      </SLink>
+      <SLink to={"/cuisine/drink"}>
+        <FaCocktail />
+        <h4>Drink</h4>
       </SLink>
     </List>
   );
@@ -39,7 +48,7 @@ const SLink = styled(NavLink)`
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  margin-right: 2rem;
+  margin-right: 1rem;
   text-decoration: none;
   background: linear-gradient(35deg, #494949, #313131);
   width: 6rem;
